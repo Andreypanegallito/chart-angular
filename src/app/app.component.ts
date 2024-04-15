@@ -19,43 +19,38 @@ export class AppComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    for (let x = 0; x < 3; x++) {
-      this.createChart(x);
-      this.createChartGroup(x);
-    }
+    setTimeout(() => {
+      this.createChart();
+      this.createChartGroup();
+    }, 1000);
   }
 
-  createChart(index: any) {
-    var ctx = `chartBar${index}`;
+  createChart() {
+    var ctx = `chartBar`;
     var chart = new Chart(ctx, {
       type: 'bar', //this denotes tha type of chart
-
       data: {
         // values on X-Axis
-        labels: [
-          '2022-05-10',
-          '2022-05-11',
-          '2022-05-12',
-          '2022-05-13',
-          '2022-05-14',
-          '2022-05-15',
-          '2022-05-16',
-          '2022-05-17',
-        ],
+        labels: ['2022-05-10', '2022-05-11', '2022-05-12'],
         datasets: [
           {
-            label: 'Sales',
-            data: ['467', '576', '572', '79', '92', '574', '573', '576'],
-            backgroundColor: 'blue',
-            stack: 'st',
+            label: 'Parte 1',
+            data: [1, 2, 3],
+            backgroundColor: '#4287f5',
           },
           {
-            label: 'Profit',
-            data: ['542', '542', '536', '327', '17', '0.00', '538', '541'],
-            backgroundColor: 'limegreen',
+            label: 'Parte 2',
+            data: [4, 5, 6],
+            backgroundColor: '#2ebf52',
+          },
+          {
+            label: 'Parte 3',
+            data: [7, 8, 9],
+            backgroundColor: '#bf2e2e',
           },
         ],
       },
+
       options: {
         responsive: true,
         aspectRatio: 2.5,
@@ -63,45 +58,58 @@ export class AppComponent implements OnInit {
     });
     this.chartsBar.push(chart);
   }
-  createChartGroup(index: any) {
-    var ctx = `chartBarGroup${index}`;
-    var chart = new Chart(ctx, {
-      type: 'bar', //this denotes tha type of chart
+  createChartGroup() {
+    try {
+      var chartName = `chartBarGroup`;
+      var chart = new Chart(chartName, {
+        type: 'bar',
+        data: {
+          labels: ['1', '2', '3'],
+          datasets: [
+            {
+              label: 'Parte 1',
+              data: [1, 2, 3],
+              backgroundColor: '#4287f5',
+            },
+            {
+              label: 'Parte 2',
+              data: [4, 5, 6],
+              backgroundColor: '#2ebf52',
+            },
+            {
+              label: 'Parte 3',
+              data: [7, 8, 9],
+              backgroundColor: '#bf2e2e',
+            },
+          ],
+        },
+        options: {
+          animation: false,
 
-      data: {
-        // values on X-Axis
-        labels: [
-          '2022-05-10',
-          '2022-05-11',
-          '2022-05-12',
-          '2022-05-13',
-          '2022-05-14',
-          '2022-05-15',
-          '2022-05-16',
-          '2022-05-17',
-        ],
-        datasets: [
-          {
-            label: 'Sales',
-            data: ['467', '576', '572', '79', '92', '574', '573', '576'],
-            backgroundColor: 'blue',
+          elements: {
+            line: {
+              fill: false,
+            },
+            point: {
+              hoverRadius: 7,
+              radius: 5,
+            },
           },
-          {
-            label: 'Profit',
-            data: ['542', '542', '536', '327', '17', '0.00', '538', '541'],
-            backgroundColor: 'limegreen',
+
+          //aspectRatio: 2.5,
+          indexAxis: 'y',
+          //scaleShowValues: true,
+          scales: {
+            y: {
+              stacked: true,
+            },
+            x: {
+              stacked: true,
+            },
           },
-          {
-            label: '3',
-            data: ['542', '542', '536', '327', '17', '0.00', '538', '541'],
-            backgroundColor: 'limegreen',
-          },
-        ],
-      },
-      options: {
-        aspectRatio: 2.5,
-      },
-    });
-    this.chartsBarGroup.push(chart);
+        },
+      });
+      this.chartsBarGroup.push(chart);
+    } catch (error) {}
   }
 }

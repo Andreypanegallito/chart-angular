@@ -5,14 +5,17 @@
         <h1>Gráficos com barras</h1>
       </div>
       <div class="chartsBar">
-        <div *ngFor="let chart of chartsBar; let i = index" class="chartBar">
-          <canvas [id]="'chartBar' + i" width="500px"></canvas>
+        <div class="chartBar">
+          <div class="titleChart">
+            <h2>Gráficos com barras lado a lado</h2>
+          </div>
+          <canvas id="chartBar" width="500px"></canvas>
         </div>
-        <div
-          *ngFor="let chart of chartsBarGroup; let i = index"
-          class="chartBar"
-        >
-          <canvas [id]="'chartBarGroup' + i" width="500px"></canvas>
+        <div class="chartBar">
+          <div class="titleChart">
+            <h2>Gráficos com barras agrupadas</h2>
+          </div>
+          <canvas id="chartBarGroup" width="500px"></canvas>
         </div>
       </div>
     </div>
