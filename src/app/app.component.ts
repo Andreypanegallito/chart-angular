@@ -1,28 +1,38 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 
 import Chart from 'chart.js/auto';
+import { SharedModule } from '../services/shared.module';
+import { PrismService } from '../services/prism.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule],
+  imports: [RouterOutlet, CommonModule, SharedModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit,AfterViewChecked {
   title = 'chart-angular';
   chartsBar: any = [];
   chartsBarGroup: any = [];
+  highlighted = false;
 
-  constructor() {}
+  constructor(private readonly prismService: PrismService) {}
 
   ngOnInit(): void {
     setTimeout(() => {
       this.createChart();
       this.createChartGroup();
     }, 1000);
+  }
+  
+  ngAfterViewChecked() {
+    if (!this.highlighted ) {
+      this.prismService.highlightAll();
+      this.highlighted = true;
+    }
   }
 
   createChart() {
