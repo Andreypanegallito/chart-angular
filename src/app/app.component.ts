@@ -13,7 +13,7 @@ import { PrismService } from '../services/prism.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
 })
-export class AppComponent implements OnInit,AfterViewChecked {
+export class AppComponent implements OnInit, AfterViewChecked {
   title = 'chart-angular';
   chartsBar: any = [];
   chartsBarGroup: any = [];
@@ -27,22 +27,22 @@ export class AppComponent implements OnInit,AfterViewChecked {
       this.createChartGroup();
     }, 1000);
   }
-  
+
   ngAfterViewChecked() {
-    if (!this.highlighted ) {
+    if (!this.highlighted) {
       this.prismService.highlightAll();
       this.highlighted = true;
     }
   }
 
   createChart() {
-    var ctx = `chartBar`;
-    var chart = new Chart(ctx, {
-      type: 'bar', //this denotes tha type of chart
+    let ctx = `chartBar`;
+    new Chart(ctx, {
+      type: 'bar', //Esse é o tipo do gráfico
       data: {
-        // values on X-Axis
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12'],
+        labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
         datasets: [
+          //Os valores dos gráficos
           {
             label: 'Parte 1',
             data: [1, 2, 3],
@@ -66,7 +66,7 @@ export class AppComponent implements OnInit,AfterViewChecked {
         aspectRatio: 2.5,
       },
     });
-    this.chartsBar.push(chart);
+    // this.chartsBar.push(chart);
   }
   createChartGroup() {
     try {

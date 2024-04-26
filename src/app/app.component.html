@@ -1,7 +1,7 @@
 <main class="main">
-  <div >
+  <!-- <div>
     <pre><code class="language-bash\">Teste de código</code></pre>
-  </div>
+  </div> -->
 
   <div class="content">
     <div class="charts">
@@ -13,13 +13,80 @@
           <div class="titleChart">
             <h2>Gráficos com barras lado a lado</h2>
           </div>
-          <canvas id="chartBar" width="500px"></canvas>
+          <div class="descStepsChart">
+            <div class="stepChart">
+              <p>
+                Para criar esse gráfico você precisa criar um canva e definir um
+                id para ele
+              </p>
+              <pre><code class="language-html">&lt;canvas id="chartBar" width="500px"&gt;&lt;/canvas&gt;</code></pre>
+            </div>
+            <div class="stepChart">
+              <p>
+                O próximo passo é necessário criar a função que vai criar o
+                gráfico.
+              </p>
+              <pre><code class="language-javascript">
+let ctx = `chartBar`;              
+new Chart(ctx, &lbrace;
+  type: 'bar', // Esse é o tipo do gráfico
+  data: &lbrace;
+    labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
+    datasets: [
+      // Os valores dos gráficos
+      &lbrace;
+        label: 'Parte 1',
+        data: [1, 2, 3],
+        backgroundColor: '#4287f5',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 2',
+        data: [4, 5, 6],
+        backgroundColor: '#2ebf52',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 3',
+        data: [7, 8, 9],
+        backgroundColor: '#bf2e2e',
+      &rbrace;,
+    ],
+  &rbrace;,
+  options: &lbrace;
+    responsive: true,
+    aspectRatio: 2.5,
+  &rbrace;,
+&rbrace;);
+              </code></pre>
+            </div>
+            <div class="stepChart">
+              <p>
+                Com isso tu já tem uma base para criar os gráficos com barras.
+              </p>
+              <!-- <pre><code class="language-html">&lt;canvas id="chartBar" width="500px"&gt;&lt;/canvas&gt;</code></pre> -->
+            </div>
+          </div>
+          <div class="divCanva">
+            <canvas id="chartBar" width="500px"></canvas>
+          </div>
         </div>
         <div class="chartBar">
           <div class="titleChart">
             <h2>Gráficos com barras agrupadas</h2>
           </div>
-          <canvas id="chartBarGroup" width="500px"></canvas>
+          <div class="descStepsChart">
+            <p></p>
+            <div class="stepChart">
+              1
+              <p>
+                Para criar esse gráfico você precisa criar um canva e definir um
+                id para ele
+              </p>
+              <pre><code class="language-bash">Teste de código</code></pre>
+            </div>
+          </div>
+          <div class="divCanva">
+            <canvas id="chartBarGroup" width="500px"></canvas>
+          </div>
         </div>
       </div>
     </div>
