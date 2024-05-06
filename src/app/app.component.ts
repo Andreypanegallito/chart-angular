@@ -5,7 +5,7 @@ import { RouterOutlet } from '@angular/router';
 import Chart from 'chart.js/auto';
 import { SharedModule } from '../services/shared.module';
 import { PrismService } from '../services/prism.service';
-
+type IndexAxisOption = 'x' | 'y';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -23,8 +23,10 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.createChart();
-      this.createChartGroup();
+      this.createChart('chartBarX', 'x');
+      this.createChart('chartBarY', 'y');
+      this.createChartGroup('chartBarGroupX', 'x');
+      this.createChartGroup('chartBarGroupY', 'y');
     }, 1000);
   }
 
@@ -35,46 +37,46 @@ export class AppComponent implements OnInit, AfterViewChecked {
     }
   }
 
-  createChart() {
-    let ctx = `chartBar`;
-    new Chart(ctx, {
-      type: 'bar', //Esse é o tipo do gráfico
-      data: {
-        labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
-        datasets: [
-          //Os valores dos gráficos
-          {
-            label: 'Parte 1',
-            data: [1, 2, 3],
-            backgroundColor: '#4287f5',
-          },
-          {
-            label: 'Parte 2',
-            data: [4, 5, 6],
-            backgroundColor: '#2ebf52',
-          },
-          {
-            label: 'Parte 3',
-            data: [7, 8, 9],
-            backgroundColor: '#bf2e2e',
-          },
-        ],
-      },
-
-      options: {
-        responsive: true,
-        aspectRatio: 2.5,
-      },
-    });
-    // this.chartsBar.push(chart);
-  }
-  createChartGroup() {
+  createChart(chartName: string, indexXYAxis: IndexAxisOption) {
     try {
-      var chartName = `chartBarGroup`;
-      var chart = new Chart(chartName, {
+      new Chart(chartName, {
+        type: 'bar', //Esse é o tipo do gráfico
+        data: {
+          labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
+          datasets: [
+            //Os valores dos gráficos
+            {
+              label: 'Parte 1',
+              data: [1, 2, 3],
+              backgroundColor: '#4287f5',
+            },
+            {
+              label: 'Parte 2',
+              data: [4, 5, 6],
+              backgroundColor: '#2ebf52',
+            },
+            {
+              label: 'Parte 3',
+              data: [7, 8, 9],
+              backgroundColor: '#bf2e2e',
+            },
+          ],
+        },
+
+        options: {
+          responsive: true,
+          indexAxis: indexXYAxis,
+        },
+      });
+    } catch (error) {}
+  }
+
+  createChartGroup(chartName: string, indexXYAxis: IndexAxisOption) {
+    try {
+      new Chart(chartName, {
         type: 'bar',
         data: {
-          labels: ['1', '2', '3'],
+          labels: ['2022-05-10', '2022-05-11', '2022-05-12'],
           datasets: [
             {
               label: 'Parte 1',
@@ -94,21 +96,8 @@ export class AppComponent implements OnInit, AfterViewChecked {
           ],
         },
         options: {
-          animation: false,
-
-          elements: {
-            line: {
-              fill: false,
-            },
-            point: {
-              hoverRadius: 7,
-              radius: 5,
-            },
-          },
-
-          //aspectRatio: 2.5,
-          indexAxis: 'y',
-          //scaleShowValues: true,
+          responsive: true,
+          indexAxis: indexXYAxis,
           scales: {
             y: {
               stacked: true,
@@ -119,7 +108,6 @@ export class AppComponent implements OnInit, AfterViewChecked {
           },
         },
       });
-      this.chartsBarGroup.push(chart);
     } catch (error) {}
   }
 }

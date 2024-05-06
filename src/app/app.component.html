@@ -9,24 +9,25 @@
         <h1>Gráficos com barras</h1>
       </div>
       <div class="chartsBar">
-        <div class="chartBar">
-          <div class="titleChart">
-            <h2>Gráficos com barras lado a lado</h2>
-          </div>
-          <div class="descStepsChart">
-            <div class="stepChart">
-              <p>
-                Para criar esse gráfico você precisa criar um canva e definir um
-                id para ele
-              </p>
-              <pre><code class="language-html">&lt;canvas id="chartBar" width="500px"&gt;&lt;/canvas&gt;</code></pre>
+        <div class="groupingCharts">
+          <div class="chartBar">
+            <div class="titleChart">
+              <h2>Gráficos com barras lado a lado na vertical</h2>
             </div>
-            <div class="stepChart">
-              <p>
-                O próximo passo é necessário criar a função que vai criar o
-                gráfico.
-              </p>
-              <pre><code class="language-javascript">
+            <div class="descStepsChart">
+              <div class="stepChart">
+                <p>
+                  Para criar esse gráfico você precisa criar um canva e definir
+                  um id para ele
+                </p>
+                <pre><code class="language-html">&lt;canvas id="chartBar" width="500px"&gt;&lt;/canvas&gt;</code></pre>
+              </div>
+              <div class="stepChart">
+                <p>
+                  O próximo passo é necessário escrever o código responsável por
+                  criar o gráfico.
+                </p>
+                <pre><code class="language-javascript">
 let ctx = `chartBar`;              
 new Chart(ctx, &lbrace;
   type: 'bar', // Esse é o tipo do gráfico
@@ -53,39 +54,206 @@ new Chart(ctx, &lbrace;
   &rbrace;,
   options: &lbrace;
     responsive: true,
-    aspectRatio: 2.5,
+    indexAxis: 'x', // Responsável por deixar o gráfico com as barras na vertical, as informações seguem pelo eixo "x"
   &rbrace;,
 &rbrace;);
               </code></pre>
+              </div>
+              <div class="stepChart">
+                <p>
+                  Pronto, gráficos estão renderizados conforme mostrado abaixo.
+                </p>
+              </div>
             </div>
-            <div class="stepChart">
-              <p>
-                Com isso tu já tem uma base para criar os gráficos com barras.
-              </p>
-              <!-- <pre><code class="language-html">&lt;canvas id="chartBar" width="500px"&gt;&lt;/canvas&gt;</code></pre> -->
+            <div class="divCanva">
+              <canvas id="chartBarX" width="500px"></canvas>
             </div>
           </div>
-          <div class="divCanva">
-            <canvas id="chartBar" width="500px"></canvas>
+          <div class="chartBar">
+            <div class="titleChart">
+              <h2>Gráficos com barras lado a lado na horizontal</h2>
+            </div>
+            <div class="descStepsChart">
+              <div class="stepChart">
+                <p>
+                  Para criar esse gráfico você precisa criar um canva e definir
+                  um id para ele
+                </p>
+                <pre><code class="language-html">&lt;canvas id="chartBar" width="500px"&gt;&lt;/canvas&gt;</code></pre>
+              </div>
+              <div class="stepChart">
+                <p>
+                  O próximo passo é necessário escrever o código responsável por
+                  criar o gráfico.
+                </p>
+                <pre><code class="language-javascript">
+let ctx = `chartBar`;              
+new Chart(ctx, &lbrace;
+  type: 'bar', // Esse é o tipo do gráfico
+  data: &lbrace;
+    labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
+    datasets: [
+      // Os valores dos gráficos
+      &lbrace;
+        label: 'Parte 1',
+        data: [1, 2, 3],
+        backgroundColor: '#4287f5',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 2',
+        data: [4, 5, 6],
+        backgroundColor: '#2ebf52',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 3',
+        data: [7, 8, 9],
+        backgroundColor: '#bf2e2e',
+      &rbrace;,
+    ],
+  &rbrace;,
+  options: &lbrace;
+    responsive: true,
+    indexAxis: 'y', // Responsável por deixar o gráfico com as barras na horizontal, as informações seguem pelo eixo "y"
+  &rbrace;,
+&rbrace;);
+              </code></pre>
+              </div>
+              <div class="stepChart">
+                <p>
+                  Pronto, gráficos estão renderizados conforme mostrado abaixo.
+                </p>
+              </div>
+            </div>
+            <div class="divCanva">
+              <canvas id="chartBarY" width="500px"></canvas>
+            </div>
           </div>
         </div>
+
         <div class="chartBar">
           <div class="titleChart">
-            <h2>Gráficos com barras agrupadas</h2>
+            <h2>Gráficos com barras agrupadas na vertical</h2>
           </div>
           <div class="descStepsChart">
-            <p></p>
             <div class="stepChart">
-              1
               <p>
                 Para criar esse gráfico você precisa criar um canva e definir um
                 id para ele
               </p>
-              <pre><code class="language-bash">Teste de código</code></pre>
+              <pre><code class="language-html">&lt;canvas id="chartBarGroup" width="500px"&gt;&lt;/canvas&gt;</code></pre>
+            </div>
+            <div class="stepChart">
+              <p>
+                O próximo passo é necessário criar a função que vai criar o
+                gráfico.
+              </p>
+              <pre><code class="language-javascript">
+let ctx = `chartBarGroup`;              
+new Chart(ctx, &lbrace;
+  type: 'bar', // Esse é o tipo do gráfico
+  data: &lbrace;
+    labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
+    datasets: [
+      // Os valores dos gráficos
+      &lbrace;
+        label: 'Parte 1',
+        data: [1, 2, 3],
+        backgroundColor: '#4287f5',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 2',
+        data: [4, 5, 6],
+        backgroundColor: '#2ebf52',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 3',
+        data: [7, 8, 9],
+        backgroundColor: '#bf2e2e',
+      &rbrace;,
+    ],
+  &rbrace;,
+  options: &lbrace;
+    responsive: true,
+    indexAxis: 'x', // Responsável por deixar o gráfico com as barras na vertical, as informações seguem pelo eixo "x"
+  &rbrace;,
+  //Adicionado essa parte abaixo no código, as barras ficam agrupadas
+  scales: &lbrace;
+            y: &lbrace;
+              stacked: true,
+            &rbrace;,
+            x: &lbrace;
+              stacked: true,
+            &rbrace;,
+  &rbrace;,
+&rbrace;);
+              </code></pre>
             </div>
           </div>
           <div class="divCanva">
-            <canvas id="chartBarGroup" width="500px"></canvas>
+            <canvas id="chartBarGroupX" width="500px"></canvas>
+          </div>
+        </div>
+        <div class="chartBar">
+          <div class="titleChart">
+            <h2>Gráficos com barras agrupadas na horizontal</h2>
+          </div>
+          <div class="descStepsChart">
+            <div class="stepChart">
+              <p>
+                Para criar esse gráfico você precisa criar um canva e definir um
+                id para ele
+              </p>
+              <pre><code class="language-html">&lt;canvas id="chartBarGroup" width="500px"&gt;&lt;/canvas&gt;</code></pre>
+            </div>
+            <div class="stepChart">
+              <p>
+                O próximo passo é necessário criar a função que vai criar o
+                gráfico.
+              </p>
+              <pre><code class="language-javascript">
+let ctx = `chartBarGroup`;              
+new Chart(ctx, &lbrace;
+  type: 'bar', // Esse é o tipo do gráfico
+  data: &lbrace;
+    labels: ['2022-05-10', '2022-05-11', '2022-05-12'], // As legendas referentes aos valores no gráfico
+    datasets: [
+      // Os valores dos gráficos
+      &lbrace;
+        label: 'Parte 1',
+        data: [1, 2, 3],
+        backgroundColor: '#4287f5',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 2',
+        data: [4, 5, 6],
+        backgroundColor: '#2ebf52',
+      &rbrace;,
+      &lbrace;
+        label: 'Parte 3',
+        data: [7, 8, 9],
+        backgroundColor: '#bf2e2e',
+      &rbrace;,
+    ],
+  &rbrace;,
+  options: &lbrace;
+    responsive: true,
+    indexAxis: 'y', // Responsável por deixar o gráfico com as barras na horizontal, as informações seguem pelo eixo "y"
+  &rbrace;,
+  //Adicionado essa parte abaixo no código, as barras ficam agrupadas
+  scales: &lbrace;
+            y: &lbrace;
+              stacked: true,
+            &rbrace;,
+            x: &lbrace;
+              stacked: true,
+            &rbrace;,
+  &rbrace;,
+&rbrace;);
+              </code></pre>
+            </div>
+          </div>
+          <div class="divCanva">
+            <canvas id="chartBarGroupY" width="500px"></canvas>
           </div>
         </div>
       </div>
